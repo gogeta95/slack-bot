@@ -1,0 +1,28 @@
+{
+  "name": "slack-bot",
+  "version": "0.0.1",
+  "description": "Slack bot to post as me",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gogeta95/slack-bot.git"
+  },
+  "keywords": [
+    "slack",
+    "bot",
+    "node",
+    "js"
+  ],
+  "author": "Saurabh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gogeta95/slack-bot/issues"
+  },
+  "homepage": "https://github.com/gogeta95/slack-bot#readme",
+  "dependencies": {
+    "slack": "^8.2.0"
+  }
+}
