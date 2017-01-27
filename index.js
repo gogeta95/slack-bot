@@ -15,6 +15,13 @@ var isDM = function(message){
   return message.channel[0]==='D';
 }
 
+var getChannels= function () {
+  web.channels.list((err,data)=>{
+    if (!err) {
+      console.log(data.channels);
+    }
+  });
+};
 //Saves all emojis present at bot startup.
 var saveEmojis =function () {
   web.emoji.list((err,data)=>{
