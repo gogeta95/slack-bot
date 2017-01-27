@@ -15,7 +15,9 @@ var isDM = function(message){
 //Listens to all message events.
 bot.message(function(message) {
   console.log('Got a message:',message)
-  addReaction('thumbsup',message.channel,message.ts);
+  if (isDM(message)) {
+    addReaction('thumbsup',message.channel,message.ts);
+  }
   if (userId==message.user) {
     //Skip if my message.
     console.log(chalk.red("My message, ignored."));
@@ -27,6 +29,11 @@ bot.message(function(message) {
   }
     sendmsg(message.channel,"BOT message")
 })
+
+//Detects if server is going to end connection soon.
+bot.goodbye(function(data){
+console.log(chalk.red('goodbye!! '+chalk.red(JSON.stringify(data))));
+});
 
 //Sends a message after checking if the user is online via another client or not.
 var sendmsg =function(channel,text) {
