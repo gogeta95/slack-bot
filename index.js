@@ -1,8 +1,10 @@
 var slack = require('slack')
 var chalk = require('chalk')
+var WebClient = require('@slack/client').WebClient;
 
 var bot = slack.rtm.client()
 var token = process.env.SLACK_API_TOKEN
+var web = new WebClient(token);
 //Stores current logged in user id.
 var userId;
 
@@ -13,6 +15,7 @@ var isDM = function(message){
 //Listens to all message events.
 bot.message(function(message) {
   console.log('Got a message:',message)
+  addReaction('thumbsup',message.channel,message.ts);
   if (userId==message.user) {
     //Skip if my message.
     console.log(chalk.red("My message, ignored."));
@@ -44,7 +47,16 @@ var sendmsg =function(channel,text) {
       }
     });
 }
-
+var addReaction= function (name,channel,timestamp) {
+    web.reactions.add(name,{channel,timestamp}, (err, data) => { 
+      if (err) {
+        console.log(chalk.red('Error Adding Reaction!'+ JSON.stringify(err)));
+      }
+      else{
+        console.log(chalk.green('Added Reaction!'+ JSON.stringify(data)));
+      }
+    })
+}
 //Checks if user is online via another client.
 var checkPresence=function(user,callback) {
   slack.users.getPresence({token,user},(err,data)=>{

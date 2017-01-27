@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/gogeta95/slack-bot#readme",
   "dependencies": {
+    "@slack/client": "^3.8.1",
     "chalk": "^1.1.3",
     "slack": "^8.2.0"
   }
