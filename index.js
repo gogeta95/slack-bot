@@ -61,11 +61,11 @@ bot.message(
   if (isDM(message)) {
     addReaction(getRandomEmoji(),message.channel,message.ts);
   }
-  // if (userId==message.user) {
-  //   //Skip if my message.
-  //   console.log(chalk.red("My message, ignored."));
-  //   return;
-  // }
+  if (userId==message.user) {
+    //Skip if my message.
+    console.log(chalk.red("My message, ignored."));
+    return;
+  }
   if (!isDM(message)) {
     console.log(chalk.red("Not a DM, ignored."));
     return;
